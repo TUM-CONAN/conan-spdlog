@@ -9,7 +9,7 @@ class SpdlogConan(ConanFile):
     name = "spdlog"
     version = "1.2.1"
     description = "Fast C++ logging library"
-    url = "https://github.com/bincrafters/conan-spdlog"
+    url = "https://github.com/ulricheck/conan-spdlog"
     homepage = "https://github.com/gabime/spdlog"
     author = "Bincrafters <bincrafters@gmail.com>"
     license = "MIT"

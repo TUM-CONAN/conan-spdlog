@@ -1,7 +1,17 @@
 build: false
 
 environment:
-    PYTHON: "C:\\Python37"
+    PYTHON: "C:\\Python27"
+    PYTHON_VERSION: "2.7.8"
+    PYTHON_ARCH: "32"
+
+    CONAN_REFERENCE: "spdlog/1.2.1"
+    CONAN_USERNAME: "camposs"
+    CONAN_LOGIN_USERNAME: "camposs"
+    CONAN_CHANNEL: "stable"
+    CONAN_STABLE_BRANCH_PATTERN: "stable/*"
+    CONAN_UPLOAD: "https://conan.campar.in.tum.de"
+    CONAN_UPLOAD_ONLY_WHEN_STABLE: 1
 
     matrix:
         - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017

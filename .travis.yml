@@ -1,3 +1,13 @@
+env:
+   global:
+     - CONAN_REFERENCE: "spdlog/1.2.1"
+     - CONAN_USERNAME: "camposs"
+     - CONAN_LOGIN_USERNAME: "camposs"
+     - CONAN_CHANNEL: "stable"
+     - CONAN_STABLE_BRANCH_PATTERN: "stable/*"
+     - CONAN_UPLOAD: "https://conan.campar.in.tum.de"
+     - CONAN_UPLOAD_ONLY_WHEN_STABLE: 1
+
 linux: &linux
    os: linux
    sudo: required
@@ -5,10 +15,22 @@ linux: &linux
    python: "3.6"
    services:
      - docker
+
 matrix:
    include:
       - <<: *linux
-        env: CONAN_CLANG_VERSIONS=4.0 CONAN_DOCKER_IMAGE=lasote/conanclang40
+        env: CONAN_GCC_VERSIONS=6 CONAN_DOCKER_IMAGE=lasote/conangcc6
+
+      - <<: *linux
+        env: CONAN_GCC_VERSIONS=7 CONAN_DOCKER_IMAGE=lasote/conangcc7
+
+      - <<: *osx
+        osx_image: xcode9.2
+        env: CONAN_APPLE_CLANG_VERSIONS=9.0
+
+      - <<: *osx
+        osx_image: xcode9.3
+        env: CONAN_APPLE_CLANG_VERSIONS=9.1
 
 install:
   - chmod +x .ci/install.sh
