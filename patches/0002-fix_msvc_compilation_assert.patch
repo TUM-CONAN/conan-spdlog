@@ -1,0 +1,41 @@
+diff --git a/include/spdlog/details/circular_q.h b/include/spdlog/details/circular_q.h
+index fee3a3bf..d147c5e0 100644
+--- a/include/spdlog/details/circular_q.h
++++ b/include/spdlog/details/circular_q.h
+@@ -5,6 +5,7 @@
+ #pragma once
+ 
+ #include <vector>
++#include <cassert>
+ 
+ namespace spdlog {
+ namespace details {
+diff --git a/include/spdlog/details/pattern_formatter-inl.h b/include/spdlog/details/pattern_formatter-inl.h
+index 1b95eb6d..115babbb 100644
+--- a/include/spdlog/details/pattern_formatter-inl.h
++++ b/include/spdlog/details/pattern_formatter-inl.h
+@@ -72,9 +72,7 @@ public:
+ private:
+     void pad_it(size_t count)
+     {
+-        // count = std::min(count, spaces_.size());
+-        assert(count <= spaces_.size());
+-        fmt_helper::append_string_view(string_view_t(spaces_.data(), count), dest_);
++        fmt_helper::append_string_view(string_view_t(spaces_.data(), static_cast<size_t>(count)), dest_);
+     }
+ 
+     const padding_info &padinfo_;
+diff --git a/include/spdlog/details/thread_pool-inl.h b/include/spdlog/details/thread_pool-inl.h
+index 77d0b1fb..fbef5682 100644
+--- a/include/spdlog/details/thread_pool-inl.h
++++ b/include/spdlog/details/thread_pool-inl.h
+@@ -7,7 +7,8 @@
+ #include "spdlog/details/thread_pool.h"
+ #endif
+ 
+-#include "spdlog/common.h"
++#include <spdlog/common.h>
++#include <cassert>
+ 
+ namespace spdlog {
+ namespace details {
