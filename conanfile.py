@@ -7,7 +7,7 @@ import os
 
 class SpdlogConan(ConanFile):
     name = "spdlog"
-    version = "1.2.1"
+    version = "1.4.2"
     description = "Fast C++ logging library"
     url = "https://github.com/ulricheck/conan-spdlog"
     homepage = "https://github.com/gabime/spdlog"
@@ -23,7 +23,7 @@ class SpdlogConan(ConanFile):
 
     def requirements(self):
         if self.options.fmt_external:
-            self.requires("fmt/5.2.1@bincrafters/stable")
+            self.requires("fmt/6.1.0")
 
     def source(self):
         tools.get("{0}/archive/v{1}.tar.gz".format(self.homepage, self.version))
