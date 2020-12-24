@@ -5,7 +5,7 @@ from conans.errors import ConanInvalidConfiguration
 
 class SpdlogConan(ConanFile):
     name = "spdlog"
-    version = "1.5.0"
+    version = "1.8.2"
     description = "Fast C++ logging library"
     url = "https://github.com/conan-io/conan-center-index"
     homepage = "https://github.com/gabime/spdlog"
@@ -46,7 +46,7 @@ class SpdlogConan(ConanFile):
             raise ConanInvalidConfiguration("wchar is not yet supported under windows")
 
     def requirements(self):
-        self.requires("fmt/6.1.2")
+        self.requires("fmt/7.1.3")
 
     def source(self):
         tools.get("https://github.com/gabime/spdlog/archive/v%s.tar.gz" % self.version)
